@@ -99,3 +99,25 @@ else
     let g:gitgutter_sign_column_always=1
 endif
 
+" Run csscomb to prettify .css files
+" Uses csscomb (https://www.npmjs.com/package/csscomb)
+fun! <SID>CSScomb(count, line1, line2)
+    let content = getline(a:line1, a:line2)
+
+    let tempFile = tempname() . '.' . &filetype
+    call writefile(content, tempFile)
+    exec "silent !csscomb " . shellescape(tempFile)
+
+    let lines = readfile(tempFile)
+
+    if len(lines) < a:line2
+        let dline = len(lines) + 1
+        exec dline . ',' . a:line2 . 'd_'
+    endif
+    call setline(a:line1, lines)
+
+    redraw!
+endfun
+
+" Enables command :CSScomb to run csscomb on current file
+command! -nargs=? -range=% CSScomb :call <SID>CSScomb(<count>, <line1>, <line2>, <f-args>)
