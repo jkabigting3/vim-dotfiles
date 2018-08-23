@@ -34,3 +34,6 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
+[submodule "bundle/vim-csscomb"]
+	path = bundle/vim-csscomb
+	url = https://github.com/csscomb/vim-csscomb.git
