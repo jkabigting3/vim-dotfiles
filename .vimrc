@@ -121,3 +121,11 @@ endfun
 
 " Enables command :CSScomb to run csscomb on current file
 command! -nargs=? -range=% CSScomb :call <SID>CSScomb(<count>, <line1>, <line2>, <f-args>)
+
+" Mapping to allow substitution of all occurrences of the word under the cursor
+" Example:
+"     Cursor on 'foo', press '\s' (backslash Leader key)
+"     Command prompt displays:
+"         :%s/\<foo\>//g
+"     Type replacement text 'bar', hit <Enter>
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
