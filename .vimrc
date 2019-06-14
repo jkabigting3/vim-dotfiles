@@ -27,6 +27,8 @@ set listchars=tab:>-,trail:␠,nbsp:⎵,space:·
 set list
 set splitbelow
 set splitright
+set ignorecase
+set smartcase
 
 " Remove trailing whitespace on save
 fun! <SID>StripTrailingWhitespace()
