@@ -38,6 +38,7 @@ fun! <SID>StripTrailingWhitespace()
     call cursor(l,c)
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespace()
+autocmd BufWritePre * :retab
 
 " Remapping save and save/exit commands that I always typo
 cnoremap <expr> X (getcmdtype() is# ':' && empty(getcmdline())) ? 'x' : 'X'
